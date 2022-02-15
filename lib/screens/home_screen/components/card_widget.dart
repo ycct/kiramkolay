@@ -58,7 +58,13 @@ class CardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: buildText(context, AppConstantsStrings.cardTitleOne, 22),
+            child: Row(
+              children: [
+                buildText(context, AppConstantsStrings.cardTitleOne, 22),
+                SizedBox(width: Get.width*0.02,),
+                const Icon(Icons.check_circle,color: Colors.green,)
+              ],
+            ),
           ),
           Expanded(
             child: buildText(context, AppConstantsStrings.cardTitleTwo, 18),

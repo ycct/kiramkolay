@@ -19,10 +19,12 @@ class AppConstantsStrings {
   static const String getWpSms = "WhatsApp ile Kod Alın";
   static const String lastPart =
       "Devam ederek Kullanım Koşullarını ve Gizlilik Politikasını kabul etmiş olursunuz.";
-  static const String enterYourCode = "Telefonunza Gelen Kodu Girin.";
+  static const String enterYourCode = "Telefonunuza Gelen Kodu Girin.";
   static const String enterYourCodeHint =
       "+90xxxxxxxxxx numarasına gönderdiğimiz 6 haneli kodu giriniz";
   static const String okay = "Onayla";
+  static const String selectCountry = "Ülkenizi Seçin";
+  static const String searchBarHint = "Nerede ev arıyorsun";
 
 
 

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:kiramkolay/utils/app_constants.dart';
 import 'components/card_widget.dart';
 import 'components/chip_widget.dart';
+import 'components/detail_screen.dart';
 import 'components/text_field.dart';
 import 'components/title_row.dart';
 
@@ -10,6 +14,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0),
+        child: buildFloatingActionButton(context),
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: Padding(
@@ -24,8 +34,9 @@ class HomeScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 10,
-                    child: buildTextField("Nerede ev arıyorsun", Icons.search),
+                    flex: 12,
+                    child: buildTextField(
+                        AppConstantsStrings.searchBarHint, Icons.search),
                   ),
                   const Spacer(),
                   Expanded(
@@ -41,16 +52,41 @@ class HomeScreen extends StatelessWidget {
                   title: "Site içinde",
                 )),
             Expanded(
-              flex: 1,
-              child: buildRow(context),
+              flex: 2,
+              child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const DetailScreen());
+                  },
+                  child: buildRow(context)),
+            ),
+            const Divider(
+              thickness: 2,
             ),
             const Expanded(
-              flex: 25,
+              flex: 28,
               child: CardWidget(),
             ),
           ],
         ),
       ),
     );
+  }
+
+  FloatingActionButton buildFloatingActionButton(BuildContext context) {
+    return FloatingActionButton.extended(
+        backgroundColor: Colors.white,
+        onPressed: () {},
+        icon: const Icon(
+          Icons.add_location_alt_outlined,
+          color: Colors.blue,
+        ),
+        label: Text(
+          "Harita",
+          style: Theme.of(context)
+              .textTheme
+              .subtitle1!
+              .copyWith(color: Colors.grey),
+        ),
+      );
   }
 }
